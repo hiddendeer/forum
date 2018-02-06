@@ -6,19 +6,11 @@ $query = "select * from father_module;";
 $result = execute($link,$query);
 
 // $arr = mysqli_fetch_assoc($result);
-$ar = array();
-while ($arr = mysqli_fetch_assoc($result)) {
-  $ar[] = $arr;
-}
-var_dump($ar);
-
-mysqli_close($link);
-exit;
 //var_dump($_SERVER);
 ?>
 <?php include 'inc/header.inc.php' ?>
 <div id="main" style="height:1000px;">
-    <div class="title">父板块列表</div>
+    <div class="title">父板块</div>
     <!--    <div class="explain">-->
     <!--        <ul>-->
     <!--            <li>1. 嘿嘿</li>-->
@@ -30,7 +22,6 @@ exit;
         <tr>
             <th>排序</th>
             <th>版块名称</th>
-
             <th>操作</th>
         </tr>
         <?php
