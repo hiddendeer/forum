@@ -1,4 +1,5 @@
 <?php
+header("Content-type:text/html;charset = utf8");
 define('DB_HOST','localhost');
 define('DB_USER','root');
 define('DB_PW','chen');

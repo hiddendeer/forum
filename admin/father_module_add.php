@@ -1,29 +1,42 @@
+<?php
+include_once '../inc/config.inc.php';
+include_once '../inc/mysql.inc.php';
+include_once '../inc/tool.inc.php';
+if (isset($_POST['submit'])) {
+  $link = connect();
+  $query = "insert into father_module(module_name,sort) values ('{$_POST['module_name']}',{$_POST['sort']})";
+  execute($link,$query);
+  if (mysqli_affected_rows($link) == 1) {
+    skip('father_module.php','成功添加');
+  } else {
+    skip('fater_module_add.php','添加失败');
+  }
+}
+$template['title'] = '父版块添加页';
+$template['css'] = array('style/public.css');
+?>
 <?php include 'inc/header.inc.php' ?>
 <div id="main">
-    <div class="title" style="margin-bottom: 20px">父板块列表</div>
+  <div class="title" style="margin-bottom: 20px">父板块列表</div>
+  <form method="post">
     <table class="au">
-        <tr>
-            <td>版块名称</td>
-            <td><input type="text"/></td>
-            <td>
-                支持HTML代码
-            </td>
-        </tr>
-        <tr>
-            <td>版块名称</td>
-            <td><input type="text"/></td>
-            <td>
-                支持HTML代码
-            </td>
-        </tr>
-        <tr>
-            <td>版块名称</td>
-            <td><input type="text"/></td>
-            <td>
-                支持HTML代码
-            </td>
-        </tr>
+      <tr>
+        <td>版块名称</td>
+        <td><input name="module_name" type="text"/></td>
+        <td>
+          输入版块名称
+        </td>
+      </tr>
+      <tr>
+        <td>排序</td>
+        <td><input name="sort" type="text"/></td>
+        <td>
+          填写一个数字即可
+        </td>
+      </tr>
     </table>
+    <input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="submit" value="添加"  />
+  </form>
 </div>
 
 <?php include 'inc/footer.inc.php' ?>
