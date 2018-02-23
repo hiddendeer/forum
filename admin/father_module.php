@@ -8,13 +8,6 @@ $template['css'] = array('style/public.css');
 <?php include 'inc/header.inc.php' ?>
 <div id="main" style="height:1000px;">
     <div class="title">父板块</div>
-       <!-- <div class="explain">
-           <ul>
-               <li>1. 嘿嘿</li>
-               <li>2. 嘿嘿</li>
-               <li>3. 嘿嘿</li>
-           </ul>
-      </div> -->
    <table class="list">
      <tr>
             <th>排序</th>
@@ -33,7 +26,7 @@ $template['css'] = array('style/public.css');
         <tr>
             <td><input class="sort" type="text" name="sort" /></td>
             <td>{$data['module_name']}[id:{$data['id']}]</td>
-            <td><a href="#">[访问]</a>&nbsp;&nbsp;<a href="#">[编辑]</a>&nbsp;&nbsp;<a href="$delete_url">[删除]</a></td>
+            <td><a href="#">[访问]</a>&nbsp;&nbsp;<a href="father_module_update.php?id={$data['id']}">[编辑]</a>&nbsp;&nbsp;<a href="$delete_url">[删除]</a></td>
         </tr>
 A;
             echo $html;
