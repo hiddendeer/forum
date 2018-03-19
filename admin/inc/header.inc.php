@@ -38,8 +38,18 @@
             <ul class="child">
                 <li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='father_module.php'){echo 'class="current"';}?> href="father_module.php">父板块列表</a></li>
                 <li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='father_module_add.php'){echo 'class="current"';}?> href="father_module_add.php">添加父板块</a></li>
-                <li><a href="#">子板块列表</a></li>
-                <li><a href="#">添加子板块</a></li>
+                <?php
+                  if (basename($_SERVER['SCRIPT_NAME'])=='father_module_update.php') {
+                    echo '<li><a class="current">编辑父版块</a></li>';
+                  }
+                 ?>
+                <li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='son_module.php'){echo 'class="current"';}?> href="son_module.php">子板块列表</a></li>
+                <li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='son_module_add.php'){echo 'class="current"';}?> href="son_module_add.php">添加子板块</a></li>
+                <?php
+                  if (basename($_SERVER['SCRIPT_NAME'])=='son_module_update.php') {
+                    echo '<li><a class="current">编辑子版块</a></li>';
+                  }
+                 ?>
                 <li><a href="#">帖子管理</a></li>
             </ul>
         </li>

@@ -4,6 +4,8 @@ include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
 if (isset($_POST['submit'])) {
   $link = connect();
+  $check = 'add';
+  include 'inc/judgment_module.php';
   $query = "insert into father_module(module_name,sort) values ('{$_POST['module_name']}',{$_POST['sort']})";
   execute($link,$query);
   if (mysqli_affected_rows($link) == 1) {
@@ -29,7 +31,7 @@ $template['css'] = array('style/public.css');
       </tr>
       <tr>
         <td>排序</td>
-        <td><input name="sort" type="text"/></td>
+        <td><input name="sort" value="0" type="text"/></td>
         <td>
           填写一个数字即可
         </td>
