@@ -11,6 +11,7 @@ function skip($url,$message) {
   </head>
   <body>
   <div class="notice"><span class="pic ask"></span>{$message}<a href="{$url}">3秒后自动跳转</a></div>
+  <div style="text-align:center;"><img src='style/load.jpg'></div>
   </body>
   </html>
 A;

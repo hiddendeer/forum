@@ -5,6 +5,7 @@
 include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
+include_once 'inc/page.inc.php';
 $link = connect();
 if (!$member_id = is_login($link)) {
   skip('login.php','请登录发帖');
@@ -51,15 +52,13 @@ $template['css'] = array('style/public.css','style/list.css');
         <div class="moderator"> 子版块： <?php echo $son_list ?></div>
       </div>
       <div class="pages_wrap">
-        <a class="btn publish" href=""></a>
+        <a class="btn publish" href="publish.php?id=<?php echo $data_father['id']?>"></a>
         <div class="pages">
-          <a>« 上一页</a>
-          <a>1</a>
-          <span>2</span>
-          <a>3</a>
-          <a>4</a>
-          <a>...13</a>
-          <a>下一页 »</a>
+          <?php
+              $page = page($count_all,4);
+              echo $page['html'];
+           ?>
+
         </div>
         <div style="clear:both;"></div>
       </div>
@@ -72,7 +71,7 @@ content.title,content.id,content.time,content.times,content.member_id,member.nam
 from content,member,son_module where
 content.module_id in({$id_son}) and
 content.member_id=member.id and
-content.module_id=son_module.id";
+content.module_id=son_module.id {$page['limit']}";
 $result_content=execute($link,$query);
 	while($data_content=mysqli_fetch_assoc($result_content)){
  ?>
@@ -85,7 +84,7 @@ $result_content=execute($link,$query);
         <div class="subject">
           <div class="titleWrap"><a href="#">[<?php echo $data_content['module_name'] ?>]</a>&nbsp;&nbsp;<h2><a href="#"><?php echo $data_content['title'] ?></a></h2></div>
           <p>
-            楼主：<?php echo $data_content['name']?>&nbsp;2014-12-08&nbsp;&nbsp;&nbsp;&nbsp;最后回复：2014-12-08
+            楼主：<?php echo $data_content['name']?>&nbsp;2018-03-21&nbsp;&nbsp;&nbsp;&nbsp;最后回复：2018-03-21
           </p>
         </div>
         <div class="count">
@@ -103,15 +102,9 @@ $result_content=execute($link,$query);
      ?>
     </ul>
     <div class="pages_wrap">
-      <a class="btn publish" href=""></a>
+      <a class="btn publish" href="publish.php?id=<?php echo $data_father['id']?>"></a>
       <div class="pages">
-        <a>« 上一页</a>
-        <a>1</a>
-        <span>2</span>
-        <a>3</a>
-        <a>4</a>
-        <a>...13</a>
-        <a>下一页 »</a>
+      <?php echo $page['html'] ?>
       </div>
       <div style="clear:both;"></div>
     </div>

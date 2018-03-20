@@ -3,7 +3,7 @@ include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
 $link = connect();
-if (is_login($link)) {
+if ($member_id = is_login($link)) {
 	skip('index.php','你登录过了');
 }
 if (isset($_POST['submit'])) {
@@ -46,8 +46,8 @@ if (isset($_POST['submit'])) {
 				</form>
 			</div>
 			<div class="login">
-				<a>登录</a>&nbsp;
-				<a>注册</a>
+				<a href="login.php">登录</a>&nbsp;
+				<a href="register.php">注册</a>
 			</div>
 		</div>
 	</div>

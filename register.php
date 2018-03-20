@@ -3,7 +3,7 @@ include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
 $link=connect();
-if (is_login($link)) {
+if ($member_id = is_login($link)) {
 	skip('index.php','你已经登录');
 }
 // var_dump(is_login($link));die();
@@ -33,9 +33,9 @@ if(isset($_POST['submit'])){
 <body>
 	<div class="header_wrap">
 		<div id="header" class="auto">
-			<div class="logo">sifangku</div>
+			<div class="logo">风之帖</div>
 			<div class="nav">
-				<a class="hover">首页</a>
+				<a class="hover" href="index.php">首页</a>
 			</div>
 			<div class="serarch">
 				<form>
@@ -44,14 +44,14 @@ if(isset($_POST['submit'])){
 				</form>
 			</div>
 			<div class="login">
-				<a>登录</a>&nbsp;
-				<a>注册</a>
+				<a href="login.php">登录</a>&nbsp;
+				<a href="register.php">注册</a>
 			</div>
 		</div>
 	</div>
 	<div style="margin-top:55px;"></div>
 	<div id="register" class="auto">
-		<h2>欢迎注册成为 私房库会员</h2>
+		<h2>欢迎注册成为会员</h2>
 		<form method="post">
 			<label>用户名：<input type="text" name="name"  /><span>*用户名不得为空，并且长度不得超过32个字符</span></label>
 			<label>密码：<input type="password" name="pw"  /><span>*密码不得少于6位</span></label>
@@ -64,9 +64,9 @@ if(isset($_POST['submit'])){
 	</div>
 	<div id="footer" class="auto">
 		<div class="bottom">
-			<a>私房库</a>
+			<a>风之语</a>
 		</div>
-		<div class="copyright">Powered by sifangku ©2015 sifangku.com</div>
+		<div class="copyright">欢迎加入我们的大家庭</div>
 	</div>
 </body>
 </html>
