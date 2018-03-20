@@ -15,6 +15,21 @@ function skip($url,$message) {
   </html>
 A;
 echo $html;
+exit();
+}
+function is_login($link){
+	if(isset($_COOKIE['chen']['name']) && isset($_COOKIE['chen']['pw'])){
+		$query="select * from member where name='{$_COOKIE['chen']['name']}' and pw='{$_COOKIE['chen']['pw']}'";
+		$result=execute($link,$query);
+		if(mysqli_num_rows($result)==1){
+			$data=mysqli_fetch_assoc($result);
+			return $data['id'];
+		}else{
+			return false;
+		}
+	}else{
+		return false;
+	}
 }
 
  ?>
