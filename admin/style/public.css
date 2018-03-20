@@ -74,6 +74,9 @@ body {
 	position:fixed;
 	top:46px;
 	left:0px;
+	height: 100%;
+	overflow: auto;
+	background-color: #b5d4ea;
 }
 #sidebar ul {
 	margin:10px 0 0 0;
@@ -81,7 +84,9 @@ body {
 #sidebar ul li div.small_title {
 	color:#333;
 	padding:4px 0 4px 15px;
-	background:#ddd;
+	background:	#85a2da;
+	font-weight: bold;
+	font-size: .9233rem;
 }
 #sidebar ul.child {
 	margin:3px 0 3px 0;
@@ -94,7 +99,7 @@ body {
 }
 #sidebar ul li a:hover {
 	text-decoration:none;
-	background:url(bg.png) -265px 9px no-repeat #e9e9e9;
+	background:url(bg.png) -265px 9px no-repeat #75caea;
 }
 #sidebar ul li a.current {
 	background:url(bg.png) -265px -11px no-repeat;
@@ -105,11 +110,12 @@ body {
 }
 #main .title {
 	width:100%;
-	height:30px;
-	line-height:30px;
+	height:40px;
+	line-height:40px;
 	text-indent:10px;
-	background:#e6e6e6;
-	color:#666;
+	background:#24557e;
+	color:#eee;
+	font-size: 1.333rem;
 	font-weight:bold;
 }
 #main .explain {
@@ -176,4 +182,3 @@ table.au tr td {
 table.au tr td.condition {
 	color:#999;
 }
-

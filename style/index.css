@@ -57,7 +57,7 @@
 }
 .box .classList .childBox {
 	width:264px;
-	height:51px;
+	/* height:51px; */
 	padding:10px 0 10px 46px;
 	border-bottom:1px dashed #e4e4e4;
 	float:left;
@@ -68,8 +68,9 @@
 	color:#333;
 }
 .box .classList .childBox h2 {
-	padding-bottom:3px;
+	padding: 0 0 3px 0;
 }
+
 .box .classList .childBox h2 a {
 	color:#333;
 	font-weight:bold;
@@ -80,6 +81,8 @@
 }
 .box .classList .new {
 	background:url(new.gif) 0px center no-repeat;
+	background-size: 44px;
+	background-position: left;
 }
 .box .classList .old {
 	background:url(old.gif) 0px center no-repeat;

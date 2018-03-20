@@ -1,4 +1,7 @@
 <?php
+/*
+*首页
+*/
 include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
@@ -10,6 +13,20 @@ $template['title'] = '首页';
 $template['css'] = array('style/public.css','style/index.css');
 ?>
 <?php include 'inc/header.inc.php' ?>
+
+<style media="screen">
+  body {
+    height: 100%;
+    background-image: url(style/indexbg.jpg);
+    background-repeat: no-repeat;
+    /* filter:blur(10px);
+    -webkit-filter:blur(10px);
+    -moz-filter:blur(10px);
+    -ms-filter:blur(10px);
+    -o-filter:blur(10px); */
+  }
+</style>
+
 <div id="hot" class="auto">
   <div class="title">热门动态</div>
   <ul class="newlist">
@@ -26,7 +43,7 @@ while ($data_father=mysqli_fetch_assoc($result_father)) {
 ?>
 <div class="box auto">
   <div class="title">
-    <?php echo $data_father['module_name'] ?>
+    <a href="list_father.php?id=<?php echo $data_father['id'] ?>" style="color:#105cb6;"><?php echo $data_father['module_name'] ?></a>
   </div>
   <div class="classList">
     <?php
@@ -40,8 +57,8 @@ while ($data_father=mysqli_fetch_assoc($result_father)) {
             $count_all = num($link,$query);
       $html =<<<A
       <div class="childBox new">
-        <h2><a href="#">{$data_son['module_name']}</a> <span>(今日{$count_today}})</span></h2>
-        帖子：{$count_all}}<br />
+        <h2><a href="#">{$data_son['module_name']}</a> <span>(今日{$count_today})</span></h2>
+        帖子：{$count_all}<br />
       </div>
 A;
 echo $html;

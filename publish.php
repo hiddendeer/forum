@@ -10,7 +10,7 @@ if (!$member_id = is_login($link)) {
   skip('login.php','请登录发帖');
 }
 if(isset($_POST['submit'])){
-	include 'inc/ check_publish.inc.php';
+	include 'inc/check_publish.inc.php';
 	$query="insert into content(module_id,title,content,time,member_id) values({$_POST['module_id']},'{$_POST['title']}','{$_POST['content']}',now(),{$member_id})";
 	execute($link, $query);
 	if(mysqli_affected_rows($link)==1){
@@ -25,7 +25,7 @@ $template['css'] = array('style/public.css','style/publish.css');
  ?>
 <?php include 'inc/header.inc.php' ?>
 	<div id="position" class="auto">
-		 <a>首页</a> &gt; 帖子发布
+		 <a href="index.php">首页</a> &gt; 帖子发布
 	</div>
 	<div id="publish">
 		<form method="post">
