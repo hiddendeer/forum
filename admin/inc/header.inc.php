@@ -24,7 +24,7 @@
 </div>
 <div id="sidebar">
     <ul>
-        <li>
+        <!-- <li>
             <div class="small_title">系统</div>
             <ul class="child">
                 <li><a class="current" href="#">系统信息</a></li>
@@ -32,7 +32,7 @@
                 <li><a href="#">添加管理员</a></li>
                 <li><a href="#">站点设置</a></li>
             </ul>
-        </li>
+        </li> -->
         <li><!--  class="current" -->
             <div class="small_title">内容管理</div>
             <ul class="child">
@@ -43,8 +43,8 @@
                     echo '<li><a class="current">编辑父版块</a></li>';
                   }
                  ?>
-                <li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='son_module.php'){echo 'class="current"';}?> href="son_module.php">子板块列表</a></li>
-                <li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='son_module_add.php'){echo 'class="current"';}?> href="son_module_add.php">添加子板块</a></li>
+                <li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='son_module.php'){echo 'class="current"';}?> href="son_module.php">副板块列表</a></li>
+                <li><a <?php if(basename($_SERVER['SCRIPT_NAME'])=='son_module_add.php'){echo 'class="current"';}?> href="son_module_add.php">添加副板块</a></li>
                 <?php
                   if (basename($_SERVER['SCRIPT_NAME'])=='son_module_update.php') {
                     echo '<li><a class="current">编辑子版块</a></li>';

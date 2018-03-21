@@ -8,7 +8,7 @@ include_once 'inc/tool.inc.php';
 $link = connect();
 $member_id = is_login($link);
 
-$template['title'] = '首页';
+$template['title'] = '风之帖';
 $template['css'] = array('style/public.css','style/index.css');
 ?>
 <?php include 'inc/header.inc.php' ?>
@@ -27,7 +27,7 @@ $template['css'] = array('style/public.css','style/index.css');
 </style>
 
 <div id="hot" class="auto">
-  <div class="title">热门动态</div>
+  <div class="title">动态</div>
   <ul class="newlist">
     <!-- 20条 -->
     <!-- <li><a href="#">[库队]</a> <a href="#">实战项目录制中...</a></li> -->

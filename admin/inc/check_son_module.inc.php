@@ -28,7 +28,7 @@ if (mysqli_num_rows($result)) {
   skip('son_module_add.php','子版块已经存在');
 }
 if (mb_strlen($_POST['info'])>255) {
-  skip('son_module_add.php','名简介多于255个字符');
+  skip('son_module_add.php','简介多于255个字符');
 }
 if (!is_numeric($_POST['sort'])) {
   skip('father_module_add.php','排序只能是数字');
