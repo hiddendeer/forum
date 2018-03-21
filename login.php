@@ -3,7 +3,8 @@ include_once 'inc/config.inc.php';
 include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
 $link = connect();
-if ($member_id = is_login($link)) {
+$member_id=is_login($link);
+if ($member_id) {
 	skip('index.php','你登录过了');
 }
 if (isset($_POST['submit'])) {
@@ -19,39 +20,10 @@ if (isset($_POST['submit'])) {
 		skip('login.php','用户名或密码错误');
 	}
 }
+$template['title']='欢迎登录';
+$template['css']=array('style/public.css','style/register.css');
  ?>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link rel="stylesheet" type="text/css" href="style/public.css" />
-<link rel="stylesheet" type="text/css" href="style/register.css" />
-</head>
-<body>
-	<div class="header_wrap">
-		<div id="header" class="auto">
-			<div class="logo">风之帖</div>
-			<div class="nav">
-				<a class="hover">首页</a>
-				<a>新帖</a>
-				<a>话题</a>
-			</div>
-			<div class="serarch">
-				<form>
-					<input class="keyword" type="text" name="keyword" placeholder="搜索其实很简单" />
-					<input class="submit" type="submit" name="submit" value="" />
-				</form>
-			</div>
-			<div class="login">
-				<a href="login.php">登录</a>&nbsp;
-				<a href="register.php">注册</a>
-			</div>
-		</div>
-	</div>
-	<div style="margin-top:55px;"></div>
+<?php include 'inc/header.inc.php'?>
 	<div id="register" class="auto">
 		<h2>请登录</h2>
 		<form method="post">

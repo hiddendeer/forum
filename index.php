@@ -30,7 +30,7 @@ $template['css'] = array('style/public.css','style/index.css');
   <div class="title">热门动态</div>
   <ul class="newlist">
     <!-- 20条 -->
-    <li><a href="#">[库队]</a> <a href="#">实战项目录制中...</a></li>
+    <!-- <li><a href="#">[库队]</a> <a href="#">实战项目录制中...</a></li> -->
 
   </ul>
   <div style="clear:both;"></div>
@@ -56,7 +56,7 @@ while ($data_father=mysqli_fetch_assoc($result_father)) {
             $count_all = num($link,$query);
       $html =<<<A
       <div class="childBox new">
-        <h2><a href="#">{$data_son['module_name']}</a> <span>(今日{$count_today})</span></h2>
+        <h2><a href="list_son.php?id={$data_son['id']}">{$data_son['module_name']}</a> <span>(今日{$count_today})</span></h2>
         帖子：{$count_all}<br />
       </div>
 A;

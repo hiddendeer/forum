@@ -20,17 +20,17 @@ foreach ($template['css'] as $val){
 			<div class="nav">
 				<a class="hover" href="index.php">首页</a>
 			</div>
-			<div class="serarch">
+			<!-- <div class="serarch"> -->
 				<form>
-					<input class="keyword" type="text" name="keyword" placeholder="搜索其实很简单" />
-					<input class="submit" type="submit" name="submit" value="" />
+					<!-- <input class="keyword" type="text" name="keyword" placeholder="搜索其实很简单" /> -->
+					<!-- <input class="submit" type="submit" name="submit" value="" /> -->
 				</form>
-			</div>
+			<!-- </div> -->
 			<div class="login">
 				<?php
 						if (isset($member_id)  && $member_id) {
 $str=<<<A
-            <a>您好!&nbsp;{$_COOKIE['chen']['name']}
+            <a>您好!&nbsp;{$_COOKIE['chen']['name']}</a><span style='color:#fff;'> | </span><a href='logout.php'>退出</a>
 A;
 							echo $str;
 						}else{

@@ -7,9 +7,10 @@ include_once 'inc/mysql.inc.php';
 include_once 'inc/tool.inc.php';
 include_once 'inc/page.inc.php';
 $link = connect();
-if (!$member_id = is_login($link)) {
-  skip('login.php','请登录发帖');
-}
+$member_id = is_login($link);
+// if (!$member_id = is_login($link)) {
+//   skip('login.php','请登录发帖');
+// }
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 	skip('index.php', '主版块id参数不合法!');
 }
@@ -49,10 +50,10 @@ $template['css'] = array('style/public.css','style/list.css');
       <div class="num">
         今日：<span><?php echo $count_today?></span>&nbsp;&nbsp;&nbsp;
         总帖：<span><?php echo $count_all?></span>
-        <div class="moderator"> 子版块： <?php echo $son_list ?></div>
+        <div class="moderator"> 子版块：<?php echo $son_list ?></div>
       </div>
       <div class="pages_wrap">
-        <a class="btn publish" href="publish.php?id=<?php echo $data_father['id']?>"></a>
+        <a class="btn publish" href="publish.php?id=<?php echo $_GET['id']?>" target="_blank"></a>
         <div class="pages">
           <?php
               $page = page($count_all,4);
@@ -82,7 +83,7 @@ $result_content=execute($link,$query);
           </a>
         </div>
         <div class="subject">
-          <div class="titleWrap"><a href="#">[<?php echo $data_content['module_name'] ?>]</a>&nbsp;&nbsp;<h2><a href="#"><?php echo $data_content['title'] ?></a></h2></div>
+          <div class="titleWrap"><a href="#">[<?php echo $data_content['module_name'] ?>]</a>&nbsp;&nbsp;<h2><a target="_blank" href="show.php?id=<?php echo $data_content['id']?>"><?php echo $data_content['title'] ?></a></h2></div>
           <p>
             楼主：<?php echo $data_content['name']?>&nbsp;2018-03-21&nbsp;&nbsp;&nbsp;&nbsp;最后回复：2018-03-21
           </p>
@@ -126,7 +127,7 @@ $result_content=execute($link,$query);
               $result_son = execute($link,$query);
               while($data_son=mysqli_fetch_assoc($result_son)){
               ?>
-            <li><h3><a href="#"><?php echo $data_son['module_name'] ?></a></h3></li>
+            <li><h3><a href="list_son.php?id=<?php echo $data_son['id'] ?>"><?php echo $data_son['module_name'] ?></a></h3></li>
             <?php
               }
              ?>
