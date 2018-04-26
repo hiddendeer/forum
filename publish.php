@@ -11,7 +11,7 @@ if (!$member_id = is_login($link)) {
 }
 if(isset($_POST['submit'])){
 	include 'inc/check_publish.inc.php';
-	$query="insert into content(module_id,title,content,time,member_id) values({$_POST['module_id']},'{$_POST['title']}','{$_POST['content']}',now(),{$member_id})";
+	$query="insert into content(module_id,title,content,time,member_id,top) values({$_POST['module_id']},'{$_POST['title']}','{$_POST['content']}',now(),{$member_id},0)";
 	execute($link, $query);
 	if(mysqli_affected_rows($link)==1){
 		skip('index.php','发布成功！');
@@ -19,6 +19,16 @@ if(isset($_POST['submit'])){
 		skip('publish.php','发布失败，请重试！');
 	}
 }
+// if(isset($_POST['submits'])){
+// 	include 'inc/check_publish.inc.php';
+// 	$query="insert into content(module_id,title,content,time,member_id) values({$_POST['module_id']},'{$_POST['title']}','{$_POST['content']}',now(),{$member_id})";
+// 	execute($link, $query);
+// 	if(mysqli_affected_rows($link)==1){
+// 		skip('index.php','发布成功！');
+// 	}else{
+// 		skip('publish.php','发布失败，请重试！');
+// 	}
+// }
 // var_dump($member_id);exit;
 $template['title']='帖子';
 $template['css'] = array('style/public.css','style/publish.css');
@@ -57,7 +67,8 @@ $template['css'] = array('style/public.css','style/publish.css');
 			</select>
 			<input class="title" placeholder="请输入标题" name="title" type="text" />
 			<textarea name="content" class="content"></textarea>
-			<input class="publish" type="submit" name="submit" value="" />
+			<input class="" type="submit" name="submit" value="发帖" />
+			<!-- <input class="" type="submit" name="submits" value="发帖并置顶" /> -->
 			<div style="clear:both;"></div>
 		</form>
 	</div>

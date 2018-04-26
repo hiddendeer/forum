@@ -27,7 +27,7 @@ $template['css'] = array('style/public.css','style/index.css');
 </style>
 
 <div id="hot" class="auto">
-  <div class="title">动态</div>
+  <div class="title"></div>
   <ul class="newlist">
     <!-- 20条 -->
     <!-- <li><a href="#">[库队]</a> <a href="#">实战项目录制中...</a></li> -->

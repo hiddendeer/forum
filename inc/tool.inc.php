@@ -5,7 +5,7 @@ function skip($url,$message) {
   <html lang="zh-CN">
   <head>
   <meta charset="utf-8" />
-  <meta http-equiv="refresh" content="2;URL = {$url}" />
+  <meta http-equiv="refresh" content="1;URL = {$url}" />
   <title>正在跳转</title>
   <link rel="stylesheet" type="text/css" href="style/remind.css" />
   </head>
@@ -25,6 +25,27 @@ function is_login($link){
 		if(mysqli_num_rows($result)==1){
 			$data=mysqli_fetch_assoc($result);
 			return $data['id'];
+		}else{
+			return false;
+		}
+	}else{
+		return false;
+	}
+}
+function check_user($member_id,$content_member_id){
+	if($member_id==$content_member_id){
+		return true;
+	}else{
+		return false;
+	}
+}
+//验证后台管理员是否登录
+function is_manage_login($link){
+	if(isset($_SESSION['manage']['name']) && isset($_SESSION['manage']['pw'])){
+		$query="select * from manage where name='{$_SESSION['manage']['name']}' and sha1(pw)='{$_SESSION['manage']['pw']}'";
+		$result=execute($link,$query);
+		if(mysqli_num_rows($result)==1){
+			return true;
 		}else{
 			return false;
 		}

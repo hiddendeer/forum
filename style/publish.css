@@ -33,7 +33,19 @@
 }
 input.publish {
 	float: left;
-	/* background:url(bg.png) 0 -0px; */
+	background:url(bg.png) 0 -0px;
+	display: block;
+    height:30px;
+    text-decoration:none;
+    text-indent:-2000px;
+    width:70px;
+    margin:10px 0 0 0;
+    border:0px;
+    cursor:pointer;
+}
+.huitie {
+	float: left;
+	background:url(bg.png) 0 -0px;
 	display: block;
     height:30px;
     text-decoration:none;
@@ -45,7 +57,7 @@ input.publish {
 }
 input.reply {
 	float: left;
-	/* background:url(bg.png) 0 -90px; */
+	background:url(bg.png) 0 -90px;
 	display: block;
     height:30px;
     text-decoration:none;

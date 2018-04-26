@@ -3,9 +3,10 @@ include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
 
-$template['title'] = '更新版块';
+$template['title'] = '更新话题';
 $template['css'] = array('style/public.css');
 $link = connect();
+// include_once 'inc/is_manage_login.inc.php';
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
   skip('fater_module_add.php','参数错误');
 }
@@ -36,7 +37,7 @@ $data = mysqli_fetch_assoc($result);
         <td>版块名称</td>
         <td><input name="module_name" value="<?php echo $data['module_name'] ?>" type="text"/></td>
         <td>
-          输入版块名
+          输入话题名
         </td>
       </tr>
       <tr>

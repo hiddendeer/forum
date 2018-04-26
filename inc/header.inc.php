@@ -16,10 +16,10 @@ foreach ($template['css'] as $val){
 <body>
 	<div class="header_wrap">
 		<div id="header" class="auto">
-			<div class="logo">风之帖</div>
-			<div class="nav">
+			<div><a class="logo"  href="index.php">风之帖</a></div>
+			<!-- <div class="nav">
 				<a class="hover" href="index.php">首页</a>
-			</div>
+			</div> -->
 			<!-- <div class="serarch"> -->
 				<form>
 					<!-- <input class="keyword" type="text" name="keyword" placeholder="搜索其实很简单" /> -->
@@ -30,7 +30,7 @@ foreach ($template['css'] as $val){
 				<?php
 						if (isset($member_id)  && $member_id) {
 $str=<<<A
-            <a>您好!&nbsp;{$_COOKIE['chen']['name']}</a><span style='color:#fff;'> | </span><a href='logout.php'>退出</a>
+<a href="member.php?id={$member_id}" target="_blank">您好！{$_COOKIE['chen']['name']}</a> <span style="color:#fff;">|</span> <a href="logout.php">退出</a>
 A;
 							echo $str;
 						}else{

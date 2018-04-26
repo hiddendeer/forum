@@ -40,6 +40,11 @@ $template['title'] = '主版块列表';
 $template['css'] = array('style/public.css','style/list.css');
  ?>
 <?php include 'inc/header.inc.php' ?>
+<style>
+  .top {
+    color: #ff0000e3;
+  }
+</style>
 <div id="position" class="auto">
   <a href="index.php">首页</a> &gt; <a href="list_father.php?id=<?php echo $data_father['id']?>"><?php echo $data_father['module_name']?></a>
 </div>
@@ -68,29 +73,48 @@ $template['css'] = array('style/public.css','style/list.css');
     <ul class="postsList">
 <?php
 $query="select
-content.title,content.id,content.time,content.times,content.member_id,member.name,member.photo,son_module.module_name,son_module.id ssm_id
-from content,member,son_module where
+content.title,content.id,content.time,content.times,content.member_id,content.top,member.name,member.photo,son_module.module_name,son_module.id ssm_id
+from content,member,son_module 
+where 
 content.module_id in({$id_son}) and
 content.member_id=member.id and
-content.module_id=son_module.id {$page['limit']}";
+content.module_id=son_module.id 
+order by content.top desc, content.time desc 
+{$page['limit']}";
 $result_content=execute($link,$query);
 	while($data_content=mysqli_fetch_assoc($result_content)){
  ?>
       <li>
         <div class="smallPic">
           <a href="#">
-            <img width="45" height="45"src="<?php if($data_content['photo']!=''){echo $data_content['photo'];}else{echo 'style/photo.jpg';} ?>">
+            <img width="45" height="45"src="<?php if($data_content['photo']!=''){echo $data_content['photo'];}else{echo 'style/photos.jpg';} ?>">
           </a>
         </div>
         <div class="subject">
-          <div class="titleWrap"><a href="#">[<?php echo $data_content['module_name'] ?>]</a>&nbsp;&nbsp;<h2><a target="_blank" href="show.php?id=<?php echo $data_content['id']?>"><?php echo $data_content['title'] ?></a></h2></div>
+          <div class="titleWrap">
+            <a href="#">[<?php echo $data_content['module_name'] ?>]</a>&nbsp;&nbsp;
+            <h2>
+              <?php
+                if($data_content['top']!=0)
+                  echo "<span class='top'>[置顶]</span>"
+              ?>
+              <a target="_blank" href="show.php?id=<?php echo $data_content['id']?>"><?php echo $data_content['title'] ?></a></h2></div>
           <p>
-            楼主：<?php echo $data_content['name']?>&nbsp;2018-03-21&nbsp;&nbsp;&nbsp;&nbsp;最后回复：2018-03-21
+            楼主：<?php echo $data_content['name']?>
+            <?php 
+						if(check_user($member_id,$data_content['member_id'])){
+							$return_url=urlencode($_SERVER['REQUEST_URI']);
+							$url=urlencode("content_delete.php?id={$data_content['id']}&return_url={$return_url}");
+							$message="你真的要删除帖子 {$data_content['title']} 吗？";
+							$delete_url="confirm.php?url={$url}&return_url={$return_url}&message={$message}";
+							echo "<a href='content_update.php?id={$data_content['id']}&return_url={$return_url}'>编辑</a> <a href='{$delete_url}'>删除</a>";
+						}
+						?>
           </p>
         </div>
         <div class="count">
           <p>
-            回复<br /><span>41</span>
+            回复<br /><span><?php $query="select count(*) from reply where content_id={$data_content['id']}"; echo num($link,$query)?></span>
           </p>
           <p>
             浏览<br /><span><?php echo $data_content['times']?></span>

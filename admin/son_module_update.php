@@ -2,10 +2,10 @@
 include_once '../inc/config.inc.php';
 include_once '../inc/mysql.inc.php';
 include_once '../inc/tool.inc.php';
-
-$template['title'] = '子版块修改页-';
+$template['title'] = '大话题修改页-';
 $template['css'] = array('style/public.css');
 $link = connect();
+// include_once 'inc/is_manage_login.inc.php';
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
   skip('son_module_add.php','参数错误');
 }
@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
           简介不得多于255个字符
         </td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>版主</td>
         <td>
           <select name="member_id">
@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
         <td>
           选一个会员作为版主
         </td>
-      </tr>
+      </tr> -->
       <tr>
         <td>排序</td>
         <td><input name="sort" value="<?php echo $data['sort']?>" type="text"/></td>
